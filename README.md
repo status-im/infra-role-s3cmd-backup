@@ -1,6 +1,6 @@
 # Description
 
-This role is intended for uploading backups to DigitalOcean Spaces using the [`s3cmd`]() script.
+This role is intended for uploading backups to DigitalOcean Spaces using the [`s3cmd`](https://s3tools.org/s3cmd) script.
 
 # Usage
 
