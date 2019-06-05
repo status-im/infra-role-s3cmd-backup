@@ -20,3 +20,8 @@ This role should be included by anothe role and ran with certain variables:
     backup_access_key: 'ACCESS_KEY'
     backup_secret_key: 'SECRET_KEY'
 ```
+
+If you want to use S3 you can set:
+```yaml
+backup_base_domain: s3.amazonaws.com
+```
