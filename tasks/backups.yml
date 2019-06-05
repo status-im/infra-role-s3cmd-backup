@@ -1,0 +1,27 @@
+---
+- name: Create directory for backup script
+  file:
+    path: '{{ item }}'
+    state: directory
+    group: adm
+    mode: 0775
+  with_items:
+    - /var/tmp/backups
+    - /var/lib/backups
+
+- name: Create backup script
+  template:
+    src: backup.sh
+    dest: '{{ backup_script }}'
+    mode: 0755
+
+- name: Configure a cron job for backups
+  cron:
+    name: Upload Discourse Backups
+    # backup happens at 03:30 UTC
+    hour:   '{{ backup_hour }}'
+    minute: '{{ backup_minute }}'
+    day:    '{{ backup_day }}'
+    month:  '{{ backup_month }}'
+    job:    '{{ backup_script }}'
+    user:   root

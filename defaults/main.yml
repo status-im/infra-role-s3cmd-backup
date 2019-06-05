@@ -1,0 +1,26 @@
+---
+# For uploading backups
+s3cmd_version: '2.0.1'
+s3cmd_name: 's3cmd-{{ s3cmd_version }}'
+s3cmd_archive: '{{ s3cmd_name }}.tar.gz'
+s3cmd_checksum: 'md5:ef525ec3bd2d430b10130de54f85e8bc'
+s3cmd_url: 'https://github.com/s3tools/s3cmd/releases/download/v{{ s3cmd_version }}/{{ s3cmd_archive }}'
+
+# Backup timing
+backup_hour: 2
+backup_minute: 0
+backup_day: '*'
+backup_month: '*'
+# Number of most recent files to backup
+backup_number: 1
+
+# Digital Ocean Spaces configuration
+backup_name: 'default'
+backup_directory: ~
+backup_script: '/var/lib/backups/{{ backup_name }}_backup.sh'
+backup_base_domain: ams3.digitaloceanspaces.com
+# example: s3://discourse-backups
+backup_bucket_name: ~
+backup_encryption_pass: ~
+backup_access_key: ~
+backup_secret_key: ~

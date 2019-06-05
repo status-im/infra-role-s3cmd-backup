@@ -1,0 +1,30 @@
+---
+- name: Check if s3cmd is installed
+  stat:
+    path: /usr/local/bin/s3cmd
+  register: s3cmd
+
+- name: Download s3cmd archive
+  get_url:
+    url: '{{ s3cmd_url }}'
+    dest: /tmp
+  when: not s3cmd.stat.exists
+
+- name: Extract s3cmd archive
+  unarchive:
+    src: '/tmp/{{ s3cmd_archive }}'
+    dest: /tmp
+    remote_src: yes
+  when: not s3cmd.stat.exists
+
+- name: Install s3cmd
+  command: python setup.py install
+  args:
+    chdir: '/tmp/{{ s3cmd_name }}'
+  when: not s3cmd.stat.exists
+
+- name: Create s3cmd config
+  template:
+    src: s3cfg.j2
+    dest: /root/.s3cfg
+    mode: 0400
