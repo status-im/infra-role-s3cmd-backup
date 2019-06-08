@@ -2,6 +2,15 @@
 
 This role is intended for uploading backups to DigitalOcean Spaces using the [`s3cmd`](https://s3tools.org/s3cmd) script.
 
+# Installation
+
+In your `requirements.yml` file:
+```yaml
+- name: infra-role-s3cmd-backup
+  src: git@github.com:status-im/infra-role-s3cmd-backup.git
+  scm: git
+```
+
 # Usage
 
 This role should be included by anothe role and ran with certain variables:
