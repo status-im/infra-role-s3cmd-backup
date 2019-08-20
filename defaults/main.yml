@@ -1,9 +1,9 @@
 ---
 # For uploading backups
-s3cmd_version: '2.0.1'
+s3cmd_version: '2.0.2'
 s3cmd_name: 's3cmd-{{ s3cmd_version }}'
 s3cmd_archive: '{{ s3cmd_name }}.tar.gz'
-s3cmd_checksum: 'md5:ef525ec3bd2d430b10130de54f85e8bc'
+s3cmd_checksum: 'md5:7e4043186f46a6832ba3fb4d9cb59bb8'
 s3cmd_url: 'https://github.com/s3tools/s3cmd/releases/download/v{{ s3cmd_version }}/{{ s3cmd_archive }}'
 
 # Backup timing
