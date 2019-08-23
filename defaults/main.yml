@@ -17,7 +17,7 @@ backup_number: 1
 # Digital Ocean Spaces configuration
 backup_name: 'default'
 backup_directory: ~
-backup_script: '/var/lib/backups/{{ backup_name }}_backup.sh'
+backup_script: '/var/lib/backups/backup_{{ backup_name }}.sh'
 #backup_base_domain: s3.amazonaws.com
 backup_base_domain: ams3.digitaloceanspaces.com
 # example: s3://discourse-backups
