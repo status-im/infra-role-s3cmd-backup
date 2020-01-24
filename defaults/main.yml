@@ -1,24 +1,28 @@
 ---
-# For uploading backups
+# tool for uploading to s3 compatible backends
 s3cmd_version: '2.0.2'
 s3cmd_name: 's3cmd-{{ s3cmd_version }}'
 s3cmd_archive: '{{ s3cmd_name }}.tar.gz'
 s3cmd_checksum: 'md5:7e4043186f46a6832ba3fb4d9cb59bb8'
 s3cmd_url: 'https://github.com/s3tools/s3cmd/releases/download/v{{ s3cmd_version }}/{{ s3cmd_archive }}'
 
-# Backup timing
-backup_hour: 2
-backup_minute: 0
-backup_day: '*'
-backup_month: '*'
+backup_name: 'default'
+backup_directory: ~
+backup_script_dir: '/var/lib/backups'
+backup_script: '{{ backup_script_dir }}/backup_{{ backup_name }}.sh'
+backup_service_path: '/lib/systemd/system'
+backup_service_name: 'backup-{{ backup_name }}'
+backup_service_user: root
+# It takes a bit to upload files
+backup_service_start_timeout: 120
+# Optionally wait for specified service to run
+backup_service_extra_after: ~
+# Backup frequency in systemd OnCalendar format
+backup_timer_frequency: 'daily'
 # Number of most recent files to backup
 backup_number: 1
 
 # Digital Ocean Spaces configuration
-backup_name: 'default'
-backup_directory: ~
-backup_script: '/var/lib/backups/backup_{{ backup_name }}.sh'
-#backup_base_domain: s3.amazonaws.com
 backup_base_domain: ams3.digitaloceanspaces.com
 # example: s3://discourse-backups
 backup_bucket_name: ~

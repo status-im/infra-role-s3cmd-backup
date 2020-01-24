@@ -1,0 +1,27 @@
+---
+- name: 'Create systemd service file: {{ backup_service_name }}'
+  template:
+    src: backup.service.j2
+    dest: '{{ backup_service_path }}/{{ backup_service_name }}.service'
+    mode: 0644
+
+- name: 'Create systemd timer file: {{ backup_service_name }}'
+  template:
+    src: backup.timer.j2
+    dest: '{{ backup_service_path }}/{{ backup_service_name }}.timer'
+    mode: 0644
+
+- name: Reload systemctl
+  command: systemctl daemon-reload
+
+- name: '(Re)start fetching service: {{ backup_service_name }}'
+  service:
+    name: '{{ backup_service_name }}.service'
+    state: started
+    enabled: true
+
+- name: 'Enable the service timer: {{ backup_service_name }}'
+  systemd:
+    name: '{{ backup_service_name }}.timer'
+    state: started
+    enabled: yes

@@ -1,0 +1,16 @@
+---
+- name: Create directory for backup script
+  file:
+    path: '{{ item }}'
+    state: directory
+    group: adm
+    mode: 0775
+  with_items:
+    - '{{ backup_script_dir }}'
+    - '{{ backup_directory }}'
+
+- name: Create backup script
+  template:
+    src: backup.sh
+    dest: '{{ backup_script }}'
+    mode: 0755
