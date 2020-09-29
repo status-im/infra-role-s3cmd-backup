@@ -1,9 +1,9 @@
 ---
 # tool for uploading to s3 compatible backends
-s3cmd_version: '2.0.2'
+s3cmd_version: '2.1.0'
 s3cmd_name: 's3cmd-{{ s3cmd_version }}'
 s3cmd_archive: '{{ s3cmd_name }}.tar.gz'
-s3cmd_checksum: 'md5:7e4043186f46a6832ba3fb4d9cb59bb8'
+s3cmd_checksum: 'md5:2637f1b36f5d9db4f60af3b18eb34958'
 s3cmd_url: 'https://github.com/s3tools/s3cmd/releases/download/v{{ s3cmd_version }}/{{ s3cmd_archive }}'
 
 backup_name: 'default'
