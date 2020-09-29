@@ -8,5 +8,5 @@ ARCHIVES=$(ls -Art ${BACKUPS_DIR} | tail -n ${BACKUPS_NUM})
 
 for ARCHIVE in ${ARCHIVES}; do
     echo "Uploading: ${ARCHIVE} >> ${BUCKET_NAME}"
-    /usr/local/bin/s3cmd put "${BACKUPS_DIR}/${ARCHIVE}" "${BUCKET_NAME}"
+    /usr/bin/s3cmd put "${BACKUPS_DIR}/${ARCHIVE}" "${BUCKET_NAME}"
 done

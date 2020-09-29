@@ -1,0 +1,10 @@
+---
+- name: Install s3cmd tool
+  apt:
+    name: s3cmd
+
+- name: Create s3cmd config
+  template:
+    src: s3cfg.j2
+    dest: /root/.s3cfg
+    mode: 0400

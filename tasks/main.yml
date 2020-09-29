@@ -1,4 +1,4 @@
 ---
-- include_tasks: s3cmd.yml
+- include_tasks: install.yml
 - include_tasks: script.yml
 - include_tasks: timer.yml
