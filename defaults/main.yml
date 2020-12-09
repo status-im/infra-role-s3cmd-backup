@@ -3,7 +3,7 @@ s3cmd_upload_name: 'default'
 s3cmd_upload_directory: ~
 s3cmd_upload_script_dir: '/usr/local/bin'
 s3cmd_upload_script: '{{ s3cmd_upload_script_dir }}/upload_{{ s3cmd_upload_name }}.sh'
-s3cmd_upload_service_path: '/lib/systemd/system'
+s3cmd_upload_service_path: '/etc/systemd/system'
 s3cmd_upload_service_name: 'upload-{{ s3cmd_upload_name }}'
 s3cmd_upload_service_user: root
 # It takes a bit to upload files
