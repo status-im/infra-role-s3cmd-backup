@@ -1,24 +1,24 @@
 ---
-backup_name: 'default'
-backup_directory: ~
-backup_script_dir: '/var/lib/backups'
-backup_script: '{{ backup_script_dir }}/backup_{{ backup_name }}.sh'
-backup_service_path: '/lib/systemd/system'
-backup_service_name: 'backup-{{ backup_name }}'
-backup_service_user: root
+s3cmd_upload_name: 'default'
+s3cmd_upload_directory: ~
+s3cmd_upload_script_dir: '/usr/local/bin'
+s3cmd_upload_script: '{{ s3cmd_upload_script_dir }}/upload_{{ s3cmd_upload_name }}.sh'
+s3cmd_upload_service_path: '/lib/systemd/system'
+s3cmd_upload_service_name: 'upload-{{ s3cmd_upload_name }}'
+s3cmd_upload_service_user: root
 # It takes a bit to upload files
-backup_service_start_timeout: 120
+s3cmd_upload_service_start_timeout: 120
 # Optionally wait for specified service to run
-backup_service_extra_after: ~
+s3cmd_upload_service_extra_after: ~
 # Backup frequency in systemd OnCalendar format
-backup_timer_frequency: 'daily'
+s3cmd_upload_timer_frequency: 'daily'
 # Number of most recent files to backup
-backup_number: 1
+s3cmd_upload_number: 1
 
 # Digital Ocean Spaces configuration
-backup_base_domain: ams3.digitaloceanspaces.com
+s3cmd_upload_base_domain: ams3.digitaloceanspaces.com
 # example: s3://discourse-backups
-backup_bucket_name: ~
-backup_encryption_pass: ~
-backup_access_key: ~
-backup_secret_key: ~
+s3cmd_upload_bucket_name: ~
+s3cmd_upload_encryption_pass: ~
+s3cmd_upload_access_key: ~
+s3cmd_upload_secret_key: ~

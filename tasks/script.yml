@@ -6,11 +6,11 @@
     group: adm
     mode: 0775
   with_items:
-    - '{{ backup_script_dir }}'
-    - '{{ backup_directory }}'
+    - '{{ s3cmd_upload_script_dir }}'
+    - '{{ s3cmd_upload_directory }}'
 
 - name: Create backup script
   template:
-    src: backup.sh
-    dest: '{{ backup_script }}'
+    src: 'upload.sh.j2'
+    dest: '{{ s3cmd_upload_script }}'
     mode: 0755

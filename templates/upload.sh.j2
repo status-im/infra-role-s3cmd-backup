@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+BACKUPS_NUM='{{ s3cmd_upload_number }}'
+BACKUPS_DIR='{{ s3cmd_upload_directory }}'
+BUCKET_NAME='{{ s3cmd_upload_bucket_name }}'
+# Find most recent archive
+ARCHIVES=$(ls -Art ${BACKUPS_DIR} | tail -n ${BACKUPS_NUM})
+
+for ARCHIVE in ${ARCHIVES}; do
+    echo "Uploading: ${ARCHIVE} >> ${BUCKET_NAME}"
+    /usr/bin/s3cmd put "${BACKUPS_DIR}/${ARCHIVE}" "s3://${BUCKET_NAME}"
+done

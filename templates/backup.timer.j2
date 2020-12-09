@@ -2,7 +2,7 @@
 After=multi-user.target
 
 [Timer]
-OnCalendar={{ backup_timer_frequency }}
+OnCalendar={{ s3cmd_upload_timer_frequency }}
 Persistent=yes
 
 [Install]

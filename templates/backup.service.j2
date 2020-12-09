@@ -1,14 +1,14 @@
 [Unit]
-Description="Service for uploading {{ backup_name }} backups to s3 buckets."
-Documentation=https://github.com/status-im/infra-role-s3cmd-backup
+Description="Service for uploading {{ s3cmd_upload_name }} backups to s3 buckets."
+Documentation=https://github.com/status-im/infra-role-s3cmd-upload
 Requires=network-online.target
 After=network-online.target
-{% if backup_service_extra_after is defined %}
-After={{ backup_service_extra_after }}
+{% if s3cmd_upload_service_extra_after is defined %}
+After={{ s3cmd_upload_service_extra_after }}
 {% endif %}
 
 [Service]
-User={{ backup_service_user }}
-ExecStart={{ backup_script }}
+User={{ s3cmd_upload_service_user }}
+ExecStart={{ s3cmd_upload_script }}
 Type=oneshot
-TimeoutStartSec={{ backup_service_start_timeout }}
+TimeoutStartSec={{ s3cmd_upload_service_start_timeout }}

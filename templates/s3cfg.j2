@@ -1,11 +1,11 @@
 [default]
-host_base = {{ backup_base_domain }}
-host_bucket = %(bucket)s.{{ backup_base_domain }}
-access_key = {{ backup_access_key }}
-secret_key = {{ backup_secret_key }}
-{% if backup_encryption_pass %}
+host_base = {{ s3cmd_upload_base_domain }}
+host_bucket = %(bucket)s.{{ s3cmd_upload_base_domain }}
+access_key = {{ s3cmd_upload_access_key }}
+secret_key = {{ s3cmd_upload_secret_key }}
+{% if s3cmd_upload_encryption_pass %}
 encrypt = True
-gpg_passphrase = {{ backup_encryption_pass }}
+gpg_passphrase = {{ s3cmd_upload_encryption_pass }}
 {% else %}
 encrypt = False
 {% endif %}
