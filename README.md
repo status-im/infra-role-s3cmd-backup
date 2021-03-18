@@ -1,3 +1,7 @@
+# :warning: LEGACY WARNING :warning:
+
+This role is no longer actively used and has been retired in favor of [Restic](https://restic.net/).
+
 # Description
 
 This role is intended for uploading backups to DigitalOcean Spaces using the [`s3cmd`](https://s3tools.org/s3cmd) script.
